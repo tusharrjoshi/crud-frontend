@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins:wght@200&display=swap');
 
 html, body{
-    background: linear-gradient(to top right , orange ,pink);
+    margin: 0;
+    padding: 0;
+    // background: linear-gradient(to top right , orange ,pink);
     font-family: 'Lato', sans-serif;
     font-family: 'Poppins', sans-serif !important; 
+    height: 100%;
 }

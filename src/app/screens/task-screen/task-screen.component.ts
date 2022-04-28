@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import TasklistModel from 'src/app/models/tasklistmodel';
+import Taskmodel from 'src/app/models/taskmodel';
+import { TaskService } from 'src/app/task.service';
 
 @Component({
   selector: 'app-task-screen',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskScreenComponent implements OnInit {
 
-  constructor() { }
+  taskLists : TasklistModel[]=[]
+  tasks : Taskmodel[]=[]
+  constructor(private taskService : TaskService) { }
 
   ngOnInit(): void {
+    this.taskService.getAllTaskLists()
+    .subscribe(allTasklists => this.taskLists =allTasklists);
   }
 
 }
