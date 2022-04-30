@@ -12,7 +12,11 @@ export class TaskService {
   constructor(private apiConfigService : ApiconfigService) { }
 
   getAllTaskLists(): Observable<TasklistModel[]>{
-    return this.apiConfigService.get(`tasklists`);
+    return this.apiConfigService.getTaskLists(`tasklists`);
+  }
+
+  getAllTasks(tasklistID:string): Observable<Taskmodel[]>{
+    return this.apiConfigService.getTask(`tasklists/${tasklistID}`);
   }
 
   createTasklist(title:string){
@@ -21,7 +25,7 @@ export class TaskService {
   }
 
   getTaskForATasklist(tasklistID:string){
-    this.apiConfigService.get(`tasklists/${tasklistID}/tasks`);
+    return this.apiConfigService.getTask(`tasklists/${tasklistID}/tasks`);
   }
 
   taskInsideATasklist(tasklistID:string,title:string){
@@ -29,11 +33,11 @@ export class TaskService {
     return this.apiConfigService.post(`tasklists/${tasklistID}/tasks`, data)
   }
 
-  deleteATasklist(tasklistID:string){
+  deleteATasklist(tasklistID:string):Observable<TasklistModel>{
     return this.apiConfigService.delete(`tasklists/${tasklistID}`)
   }
 
-  deleteTaskInTasklist(tasklistID:string,taskID:string){
+  deleteTaskInTasklist(tasklistID:string,taskID:string):Observable<Taskmodel>{
     return this.apiConfigService.delete(`tasklists/${tasklistID}/tasks/${taskID}`)
   }
 

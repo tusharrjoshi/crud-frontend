@@ -1,5 +1,5 @@
 class TasklistModel {
-    _id!: String;
+    _id!: string;
     title!:string;
 }
 
