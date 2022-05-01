@@ -19,7 +19,7 @@ export class TaskService {
     return this.apiConfigService.getTask(`tasklists/${tasklistID}`);
   }
 
-  createTasklist(title:string){
+  createTasklist(title:string):Observable<TasklistModel>{
     let data ={'title': title}
     return this.apiConfigService.post(`tasklists`, data);
   }
