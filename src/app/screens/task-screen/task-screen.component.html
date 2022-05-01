@@ -1,0 +1,88 @@
+<style>
+  .badge {
+    color: rgb(252, 252, 252) !important;
+  }
+
+  .list-group-item:hover {
+    background-color: #007bff50;
+  }
+
+  .custom {
+    text-align: right;
+    /* max-width: 50%; */
+  }
+
+  .header-header {
+    /* margin-left: 1rem; */
+    width: 50%;
+  }
+
+  .header-button {
+    width: 50%;
+    text-align: right;
+  }
+  .tasklistt-header{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  @media (max-width: 765px) {
+    .task-div {
+      margin-top: 4%;
+    }
+  }
+</style>
+<div class="border border-dark mt-4 p-0">
+  <h1 class="bg-primary bg-gradient p-2 fw-bolder text-center mb-0" style="color: white">
+    Task manager
+  </h1>
+</div>
+<div class="row m-1 p-2 mt-3 mb-3">
+  <div class="col-md-4 col-sm-12">
+    <div class="row tasklistt-header">
+      <div class="header-header">
+        <h2>Task-List</h2>
+      </div>
+      <div style="text-align: right" class="header-button">
+        <button type="button" class="btn btn-outline-secondary" routerLink="/new-task-list">
+          Add Task-List
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="list-group">
+          <a [routerLink]="['/task-list', item._id]" routerLinkActive="active" *ngFor="let item of taskLists"
+            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+            aria-current="true">
+            {{ item.title }}
+            <span class="badge bg-danger rounded-pill" (click)="deletTasklist(item)">X</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8 col-sm-12 task-div">
+    <div class="row tasklistt-header">
+      <div class="header-header">
+        <h2>Task</h2>
+      </div>
+      <div class="header-button">
+        <button type="button" class="btn btn-outline-secondary" (click)="addNewTask()">
+          New Task
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <ul class="list-group">
+          <li [class.mark-complete]="task.completed == true" *ngFor="let task of tasks" (click)="taskClicked(task)"
+            class="list-group-item d-flex justify-content-between align-items-center">
+            {{ task.title }}
+            <span (click)="deleteTask(task)" class="badge bg-danger rounded-pill">X</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
