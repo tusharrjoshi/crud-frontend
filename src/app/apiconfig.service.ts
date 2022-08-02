@@ -7,7 +7,7 @@ import Taskmodel from './models/taskmodel';
   providedIn: 'root'
 })
 export class ApiconfigService {
-  API_BASE_URL ='http://localhost:3000';
+  API_BASE_URL ='https://backendtaskmanager.herokuapp.com';
   constructor(private httpClient : HttpClient) { }
 
   getTaskLists(url:string){
